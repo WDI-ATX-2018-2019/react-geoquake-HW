@@ -1,14 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const EarthquakeList = (props) => {
     console.log(props)
+
     const earthquakeList = props.earthquakes.map((earthquake, i) => {
-        return <li key={i}>{earthquake.properties.place}</li>
+    	let quakeDate = new Date(earthquake.properties.time)
+    	let currentDate = Date.now()
+    	let daysDifference = Math.floor((currentDate - quakeDate) / 86400000)
+
+        return <li key={i}>{earthquake.properties.title} -- {daysDifference} days ago</li>
     })
 
     return (
-        <div>
-          <h4>Earthquake List</h4>
+        <div id='info'>
           <ul>
             {earthquakeList}
           </ul>
