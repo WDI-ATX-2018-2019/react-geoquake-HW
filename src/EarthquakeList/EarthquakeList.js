@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 
+
+
 const EarthquakeList = (props) => {
     console.log(props)
     const earthquakeList = props.earthquakes.map((earthquake, index) => {
-
-        return <li key={index}>{earthquake.properties.place}</li>
+	const quakeDate = new Date(earthquake.properties.time).toString()
+	
+        return <li key={index}> {earthquake.properties.title} // {quakeDate}</li>
     })
     return (
-        <div className="list">
-         
+        
+        <div id="info">
+        <h4>Earthquake List</h4> 
          <ul>{earthquakeList}</ul>
          </div>
     )
@@ -17,3 +21,4 @@ const EarthquakeList = (props) => {
 
 
 export default EarthquakeList
+
