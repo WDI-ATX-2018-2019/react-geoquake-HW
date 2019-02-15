@@ -12,8 +12,8 @@ body {
 
 .mapContainer {
   width: 40%;
-  padding-top: 2em; 
-  padding-left: 2em;
+  height: 700px;
+ 
   background-color: lightblue;
 }
 
