@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-      this.getQuakes().then((data) => console.log(data, ' Significant earthquakes in the past 30 days.'))
+      this.getQuakes().then((data) => console.log('Earthquake data successfully retrieved!'))
   }
 
   render() {
@@ -41,8 +41,9 @@ class App extends Component {
           />
         </div>
         <div className="quakeContainer">
-          <h1>Earthquakes from the past 30 days: </h1>
+          <h1>Significant earthquakes from the past 30 days: </h1>
           <EarthquakeList earthquakes={this.state.earthquakes} />
+          <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>, licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a></div>
         </div>
       </div>
     );
