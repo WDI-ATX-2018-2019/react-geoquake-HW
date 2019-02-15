@@ -2,18 +2,25 @@ import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import APIKEY from './API'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Marker = ({ image }) => <div><img className="quakeImage" alt="earthquake icon" src={image}/></div>;
+
 
 class SimpleMap extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-
-    }
-  }
+ 
 
   render() {
+
+          const markerList = this.props.earthquakes.map((earthquake, i) => {
+              return  (
+                <Marker
+                  key={i}
+                  lat={earthquake.geometry.coordinates[1]}
+                  lng={earthquake.geometry.coordinates[0]}
+                  image={"../images/earthquake.png"}
+                />
+              )
+          })
+
     return (
       // Important! Always set the container height explicitly
       <div className="map" style={{ height: '100vh', width: '100%' }}>
@@ -22,31 +29,7 @@ class SimpleMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-
-{/*        {const Marker = (props) => {
-          console.log(props)
-
-          const markerList = props.earthquakes.map((earthquake, i) => {
-              let lat = earthquake.geometry.coordinates[0]
-              let lng = earthquake.geometry.coordinates[1]
-              let markerName = earthquake.features.title
-
-              return  <Marker
-                        key={i}
-                        name={markerName}
-                        position={{lat: {lat}, lng: {lng}}}
-                      />
-          })
-
-          return (
-              <div>
-                <ul>
-                  {markerList}
-                </ul>
-              </div>
-          )
-        }}*/}
-
+        {markerList}
         </GoogleMapReact>
       </div>
     );
