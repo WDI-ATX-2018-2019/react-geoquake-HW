@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Container } from 'semantic-ui-react'
+import { Responsive, List, Container } from 'semantic-ui-react'
 
 const EarthquakeList = (props) => {
     console.log(props)
@@ -10,14 +10,14 @@ const EarthquakeList = (props) => {
     	let daysDifference = Math.floor((currentDate - quakeDate) / 86400000)
 
         return  <List.Item key={i}>
-                    <List.Header>{i+1} {earthquake.properties.title}</List.Header>
+                    <List.Header>{earthquake.properties.title}</List.Header>
                     {daysDifference} days ago
                 </List.Item>
     })
 
     return (
-        <Container id='info'>
-          <List>
+        <Container fluid id='info'>
+          <List ordered>
             {earthquakeList}
           </List>
         </Container>
